@@ -12,5 +12,9 @@ Gem::Specification.new {|s|
 	s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
 	s.require_paths = ['lib']
 
+	s.add_dependency 'call-me'
+
+	s.add_dependency 'opal-native'
+	s.add_dependency 'opal-forwardable'
 	s.add_dependency 'opal-browser'
 }

@@ -8,7 +8,12 @@
 #  0. You just DO WHAT THE FUCK YOU WANT TO.
 #++
 
-require 'opal/browser/canvas/context'
+require 'native'
+require 'forwardable'
+require 'call-me/named'
+
+require 'opal/browser'
+require 'opal/browser/html5/canvas/context'
 
 module Browser
 
@@ -28,7 +33,7 @@ class Canvas
 	end
 
 	def to_data (type = undefined)
-		`#@element.toDataUrl(type)`
+		`#{@element.to_native}.toDataUrl(type)`
 	end
 end
 

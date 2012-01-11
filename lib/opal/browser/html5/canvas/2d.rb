@@ -8,6 +8,8 @@
 #  0. You just DO WHAT THE FUCK YOU WANT TO.
 #++
 
+require 'call-me/named'
+
 module Browser; class Canvas
 
 Context.define '2d' do
@@ -363,17 +365,11 @@ Context.define '2d' do
 		image = Element(args.shift)
 
 		if args.first.is_a?(Hash)
-			# TODO: readd the mass assignment
-			source      = args[0]
-			destination = args[1]
+			source, destination = args
 
 			`#@native.drawImage(#{image.to_native}, #{source[:x]}, #{source[:y]}, #{source[:width]}, #{source[:height]}, #{destination[:x]}, #{destination[:y]}, #{destination[:width]}, #{destination[:height]})`
 		else
-			# TODO: readd the mass assignment
-			x = args[0]
-			y = args[1]
-			width = args[2]
-			height = args[3]
+			x, y, width, height = args
 
 			`#@native.drawImage(#{image.to_native}, x, y, #{width || `undefined`}, #{height || `undefined`})`
 		end
